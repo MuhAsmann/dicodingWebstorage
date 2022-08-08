@@ -131,7 +131,7 @@ function updateScore() {
     localStorage.getItem(localMaximumAttemptsKey)
   );
   if (sessionAttemptsValue > localAttemptsValue) {
-    localStorage.setItem(localMaximumAttempsKey, sessionAttemptsValue);
+    localStorage.setItem(localMaximumAttemptsKey, sessionAttemptsValue);
     localMaximumAttemptField.innerText = sessionAttemptsValue;
   }
   const previousTotalVictoryAmount = parseInt(
@@ -148,4 +148,12 @@ window.addEventListener("beforeunload", function () {
   sessionUserAttemptsField.innerText = sessionStorage.getItem(
     sessionUserAttemptsKey
   );
+});
+
+destroyDataButton.addEventListener('click', function () {
+  sessionStorage.removeItem(sessionAnswerKey);
+  sessionStorage.removeItem(sessionUserAttemptsKey);
+  localStorage.removeItem(localTotalVictoryKey);
+  localStorage.removeItem(localMaximumAttemptsKey);
+  alert('Mohon me-refresh halaman ini kembali');
 });
